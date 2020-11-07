@@ -26,8 +26,7 @@ layout: post
         return;
       }
 
-      var plainHTML = CryptoJS.AES.decrypt(encryptedHTML, passphrase).toString(CryptoJS.enc.Utf8);
-      document.getElementById('encrypted_content').innerHTML = plainHTML;
+      alert('success');
     });
   </script>
 </div>
