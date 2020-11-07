@@ -18,11 +18,10 @@ layout: post
       e.preventDefault();
       var passphrase = document.getElementById('encrypt_password').value,
           encryptedMsg = '{{ page.encrypted }}',
-          encryptedHMAC = encryptedMsg.substring(0, 64),
-          encryptedHTML = encryptedMsg.substring(64),
-          decryptedHMAC = CryptoJS.HmacSHA256(encryptedHTML, CryptoJS.SHA256(passphrase).toString()).toString();
+          e_encrypted = 'U2FsdGVkX18kja1ZowdsWB7TZwN/LLrSEhc4u7iNHfg=',
+          e_decrypted = CryptoJS.AES.decrypt(e_encrypted, passphrase);
 
-      if (decryptedHMAC !== encryptedHMAC) {
+      if (e_decrypted.toString(CryptoJS.enc.Utf8) !== passphrase) {
         alert('Bad passphrase!');
         return;
       }
