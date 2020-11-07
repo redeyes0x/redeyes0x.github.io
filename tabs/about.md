@@ -10,8 +10,5 @@ title: About
 
 > **Note**: Add Markdown syntax content to file `tabs/about.md` and it will show up on this page.
 
-
-<a href="mailto:{{ site.social-media.email }}" title="Email"><i class="fa fa-envelope-square"></i></a>
-<a href="https://www.facebook.com/{{ site.social-media.facebook }}" title="Facebook"><i class="fa fa-facebook-square"></i></a>
-
+[I'm an inline-style link](https://www.google.com)
 
