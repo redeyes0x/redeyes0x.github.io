@@ -1,0 +1,32 @@
+---
+layout: post
+---
+
+<div id="encrypted_content">
+  <form id="encrypt_form" action="#" method="post">
+    <input id="encrypt_password"
+           type="password"
+           name="password"
+           placeholder="try 'password'"
+           autofocus />
+
+    <input type="submit" value="Unlock"/>
+  </form>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+  <script>
+    document.getElementById('encrypt_form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var passphrase = document.getElementById('encrypt_password').value,
+          encryptedMsg = '{{ page.encrypted }}',
+          e_encrypted = 'U2FsdGVkX18kja1ZowdsWB7TZwN/LLrSEhc4u7iNHfg=',
+          e_decrypted = CryptoJS.AES.decrypt(e_encrypted, passphrase);
+
+      if (e_decrypted.toString(CryptoJS.enc.Utf8) !== passphrase) {
+        alert('Bad passphrase!');
+        return;
+      }
+
+      alert('success');
+    });
+  </script>
+</div>
