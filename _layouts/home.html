@@ -56,7 +56,9 @@ layout: page
         title="Pinned"></i>
       {% endif %}
     </div>
-    <img src="{{ post.image }}"
+    
+    <img src="{{ post.image }}" class="post-preview-img">
+    
     <div class="post-content">
       <p>
         {% include no-linenos.html content=post.content %}
