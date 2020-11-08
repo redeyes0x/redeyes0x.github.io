@@ -49,11 +49,8 @@ layout: page
 
   <div class="post-preview">
     
-        {% if page.image %}
-          <img src="{{ img_placehodler }}" data-src="{{ page.image }}" class="post-preview-img">
-        {% endif %}
-    
     <div class="d-flex justify-content-between pr-xl-2">
+      <img src= assets/img/sample/buff.png>
       <h1><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h1>  
       {% if post.pin == true %}
         <i class="fas fa-thumbtack fa-fw text-muted mt-1 ml-2 mt-xl-2" data-toggle="tooltip" data-placement="left"
