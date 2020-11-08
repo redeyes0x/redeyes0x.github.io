@@ -7,6 +7,11 @@ layout: page
 # MIT Licensed
 ---
 
+{% for post in site.posts %}
+<img src="{% post.feature_img %}" />
+{% endfor %}
+```
+
 
 {% assign pinned = site.posts | where_exp: "item", "item.pin == true"  %}
 {% assign default = site.posts | where_exp: "item", "item.pin != true"  %}
