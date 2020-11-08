@@ -44,6 +44,9 @@ image: /assets/img/sample/buff.png
         alert('Bad passphrase!');
         return;
       }
+      else if (!!passphrase) {
+      alert('Bad!')
+  }
 
       document.write(atob(decrypted.toString(CryptoJS.enc.Utf8)));
       document.close();
