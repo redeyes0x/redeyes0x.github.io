@@ -49,11 +49,6 @@ layout: page
 
   <div class="post-preview">
     
-    
-        {%- capture img_placehodler -%}
-          data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7
-        {% endcapture%}
-
         {% if page.image %}
           <img src="{{ img_placehodler }}" data-src="{{ page.image }}" class="post-preview-img">
         {% endif %}
