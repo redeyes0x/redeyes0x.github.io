@@ -40,7 +40,7 @@ image: /assets/img/sample/buff.png
       var decrypted = CryptoJS.AES.decrypt(encrypted, passphrase);
       
       
-      if (e_decrypted.toString(CryptoJS.enc.Utf8) !== passphrase) {
+      if (e_decrypted.toString(CryptoJS.enc.Utf8) !== passphrase || passphrase === "") {
         alert('Bad passphrase!');
         return;
       }
