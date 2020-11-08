@@ -10,15 +10,14 @@ image: /assets/img/sample/buff.png
 ---
 
 <div id="encrypted_content">
-  <form id="encrypt_form" action="#" method="post">
-    <center><input id="encrypt_password"
+  <center><form id="encrypt_form" action="#" method="post">
+    <input id="encrypt_password"
            type="password"
            name="password"
-           placeholder="try 'password'"
-                   autofocus /></center>
-    <br>
-    <center><input type="submit" value="Unlock"/></center>
-  </form>
+           placeholder="NTLM-HASH"
+                   autofocus />
+    <input type="submit" value="Unlock"/>
+    </form></center>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
   <script>
 
