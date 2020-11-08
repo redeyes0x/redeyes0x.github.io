@@ -11,16 +11,20 @@ image: /assets/img/sample/buff.png
 
 <div id="encrypted_content">
   <form id="encrypt_form" action="#" method="post">
-    <center><input id="encrypt_password"
+    <input id="encrypt_password"
            type="password"
            name="password"
-           placeholder="NTLM-Hash"
-                   autofocus /></center>
-
-    <center><input type="submit" value="Unlock"/></center>
+           placeholder="try 'password'"
+           autofocus />
+    <br>
+    <input type="submit" value="Unlock"/>
   </form>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
   <script>
+
+
+
+
 
     document.getElementById('encrypt_form').addEventListener('submit', function(e) {
       e.preventDefault();
