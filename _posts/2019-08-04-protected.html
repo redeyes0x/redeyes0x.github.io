@@ -39,10 +39,9 @@ image: /assets/img/sample/buff.png
 
       var decrypted = CryptoJS.AES.decrypt(encrypted, passphrase);
       
-      if ( passphrase === "") {
-        alert('Bad passphrase!');
-        return;
-       }
+      if (!!passphrase) {
+       alert('Bad passphrase!')
+    }
       
       if (e_decrypted.toString(CryptoJS.enc.Utf8) !== passphrase) {
         alert('Bad passphrase!');
