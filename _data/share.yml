@@ -12,15 +12,15 @@ platforms:
   -
     type: Twitter
     icon: "fab fa-twitter"
-    link: "https://twitter.com/0xdedmuz"
+
   -
     type: Linkedin
     icon: "fab fa-linkedin"
-    link: "https://www.linkedin.com/in/di%C3%B3genes-muziotti-b811081b5/"
+
   -
-    type: Youtube
-    icon: "fab fa-youtube"
-    link: "https://www.youtube.com/channel/UCQ6SnwbMLZ4iF5bJy14PyZQ"
+    type: Reddit
+    icon: "fa fa-reddit"
+  
 
   # Uncomment below if you need to.
   # -
