@@ -6,6 +6,7 @@ categories: [Blogging, Demo, Hacking]
 tags: [typography, hacking]
 math: true
 image: /assets/img/sample/buff.png
+hide: false
 ---
 
 
