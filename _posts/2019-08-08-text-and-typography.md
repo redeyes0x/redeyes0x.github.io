@@ -3,7 +3,7 @@ title: Text and Typography
 author: Cotes Chung
 date: 2019-08-08 11:33:00 +0800
 categories: [Blogging, Demo, Hacking]
-tags: [typography, hacking]
+tags: [penetration]
 math: true
 image: /assets/img/sample/buff.png
 hide: false
