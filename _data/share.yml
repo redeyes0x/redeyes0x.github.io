@@ -17,11 +17,6 @@ platforms:
     type: Linkedin
     icon: "fab fa-linkedin"
 
-  -
-    type: Reddit
-    icon: "fa fa-reddit"
-  
-
   # Uncomment below if you need to.
   # -
   #
