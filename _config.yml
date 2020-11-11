@@ -10,7 +10,7 @@
 
 title: OxDeed                          # the main title
 
-tagline: 𝙃𝙖𝙘𝙠𝙩𝙝𝙚𝙗𝙤𝙭 𝙑𝙖𝙪𝙡𝙩. # it will display as the sub-title
+tagline: Hackthebox Vault # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   Blog de Ciberseguridad/Infosec | Writeups Máquinas de Hackthebox activas/retiradas | Red Teaming - Hacking
