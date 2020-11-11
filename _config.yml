@@ -10,12 +10,10 @@
 
 title: OxDeed                          # the main title
 
-tagline: 𝙃𝙖𝙘𝙠𝙩𝙝𝙚𝙗𝙤𝙭 𝙑𝙖𝙪𝙡𝙩. deed  # it will display as the sub-title
+tagline: 𝙃𝙖𝙘𝙠𝙩𝙝𝙚𝙗𝙤𝙭 𝙑𝙖𝙪𝙡𝙩. # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  A minimal, portfolio, sidebar,
-  bootstrap Jekyll theme with responsive web design
-  and focuses on text presentation.
+  Blog de Ciberseguridad/Infosec | Writeups Máquinas de Hackthebox activas/retiradas | Red Teaming - Hacking
 
 # Replace with the website url, e.g. 'https://username.github.io'
 url: 'https://0xdeed.github.io'
