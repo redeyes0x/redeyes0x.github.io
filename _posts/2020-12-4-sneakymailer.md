@@ -1,5 +1,5 @@
 ---
-title: SneakyMailer HTB
+title: SneakyMailer
 author: OxDeed
 date: 2020-12-4 15:17:00 -0300
 tags: [smtp,phishing,medium,hackthebox,gtfobins]
