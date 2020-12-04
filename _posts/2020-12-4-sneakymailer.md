@@ -85,9 +85,9 @@ lo agregamos también a el archivo hosts.
 10.10.10.197    sneakycorp.htb sneakymailer.htb
 ```
 
-Podemos extraer fácilmente las cuentas de correos con esta aplicación. `https://email-checker.net/extract-email`
+Podemos extraer fácilmente las cuentas de correos con esta aplicación. [**email-checker**](https://email-checker.net/extract-email)
 Hacemos ctrl + a 
-copiamos y pegamos en la herramienta y extraemos.
+copiamos, pegamos en la herramienta y extraemos.
 ![Desktop View](/htb/sneakymailer/email3.png)
 
 Lo guardamos todo en un archivo llamado emails.txt
