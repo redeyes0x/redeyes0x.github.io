@@ -139,6 +139,8 @@ Lo que vamos a hacer ahora es probar si podemos mandar correos a esos usuarios, 
 ```
 Perfecto el correo se envió exitosamente. 
 
+---
+
 ## Phishing a los empleados
 
 Podemos automatizar esta tarea haciendo un script en python para poder enviarle el phishing a cada usuario. Entonces nuestro código sería algo así: 
@@ -256,6 +258,7 @@ Please notify me when you do i=
 
 03 OK FETCH completed.
 ```
+
 Email 2: Este email es bastante interesante, seguro nos servirá para más tarde. 
 
 `03 FETCH 2 BODY[]`
@@ -356,6 +359,8 @@ Agregamos a nuestro archivo hosts.
 
 Y ahora accedemos al servidor ftp con el nuevo subdominio y comprobamos que ahora si podemos acceder al archivo y por lo tanto obtener nuestra shell.
 
+---
+
 ## LFI TO RCE 
 
 ```console
@@ -440,11 +445,9 @@ Me llamo mucho la atención el usuario pypi con el dominio `pypi.sneakycorp.htb`
 Para seguir avanzando tire un linenum.sh para ver si encontraba algo, y efectivamente encontramos el hash del usuario pypi 
 ```console
 htpasswd
-
-	[-] htpasswd found - could contain passwords:                                                            
-	/var/www/pypi.sneakycorp.htb/.htpasswd                                                                   
-	pypi:$apr1$RV5c5YVs$U9.OTqF5n8K4mxWpSSR/p/
-
+[-] htpasswd found - could contain passwords:                                                            
+/var/www/pypi.sneakycorp.htb/.htpasswd                                                                   
+pypi:$apr1$RV5c5YVs$U9.OTqF5n8K4mxWpSSR/p/
 ```
 ---
 
@@ -520,7 +523,6 @@ setuptools.setup(
     python_requires='>=3.6',
 )
 
-
 ```
 Nos ponemos a la escucha en nuestra máquina:
 ```console
@@ -588,7 +590,6 @@ setuptools.setup(
     ],
     python_requires='>=3.6',
 )
-
 
 ```
 subimos con el siguiente comando: 
