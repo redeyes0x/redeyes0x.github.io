@@ -14,7 +14,9 @@ image: /htb/sneakymailer/sneakymailer.png
 
 Luego de revisar los correos encontramos otras credenciales, que usaremos en el servidor `FTP`. Nos damos cuenta que podemos subir un reverse shell php y así alcanzar el RCE, pero con otro dominio que tuvimos que encontrar haciendo fuzzing `dev.sneakycorp.htb`. 
 
-Entramos como `www-data` y nos topamos con un hash del `pypiserver`. Lo que hicimos fue subir un paquete con nuestro payload al servidor que nos sirvió para conseguir el user.txt como low. El próximo paso para obtener nuestro preciado root.txt es bastante sencillo, ya que podemos ejecutar pip3 como sudo, usando las técnicas de `gtfobins` somos capaces de obtener nuestra shell como ¡`Root`!.
+Entramos como `www-data` y nos topamos con un hash del `pypiserver`. Lo que hicimos fue subir un paquete con nuestro payload al servidor que nos sirvió para conseguir el user.txt como low. 
+
+Lo próximo que hicimos para obtener nuestro preciado root.txt fue bastante sencillo, ya que podemos ejecutar pip3 como sudo, y usando las técnicas de `gtfobins` somos capaces de escalar hacia ¡`Root`!.
 
 ---
 
