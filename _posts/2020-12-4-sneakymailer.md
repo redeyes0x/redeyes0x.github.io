@@ -413,14 +413,13 @@ uid=33(www-data) gid=33(www-data) groups=33(www-data)
 /bin/sh: 0: can't access tty; job control turned off
 $ 
 ```
-### user developer
 Podemos hacer un `su` hacia el usuario developer con las mismas credenciales
 ```console
 www-data@sneakymailer:/$ su developer
 Password: m^AsY7vTKVT+dV1{WOU%@NaHkUAId3]C
 developer@sneakymailer:/$ 
 ```
-### Enumeracion
+### Enumeración
 Al rato de echar un vistazo y enumerar me encuentro con los siguientes usuarios:
 
 ```console
@@ -440,6 +439,7 @@ Me llamo mucho la atención el usuario pypi con el dominio `pypi.sneakycorp.htb`
 ```
 
 ![Desktop View](/htb/sneakymailer/pipy.png)
+
 ---
 
 Para seguir avanzando tire un linenum.sh para ver si encontraba algo, y efectivamente encontramos el hash del usuario pypi 
@@ -478,6 +478,7 @@ Básicamente lo que le está diciendo a low es que su tarea es probar y borrar c
 Y esto es bastante curioso, porque podríamos crear un paquete, subirlo y low deberá probarlo. Entonces lo que haremos es meter nuestro payload en ese paquete maligno, para conseguir la shell como low.
 
 Luego de leer un poco la documentación podemos ponernos manos a la obra. [**pipyserver**](https://pypi.org/project/pypiserver/)
+
 Necesitaremos crear 2 archivos esenciales
 
 `.pypirc`: Este archivo almacena inicios de sesión y contraseñas para autenticar sus cuentas. Normalmente se almacena en su directorio personal.
