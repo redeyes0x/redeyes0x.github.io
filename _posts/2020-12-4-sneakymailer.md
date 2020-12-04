@@ -458,8 +458,6 @@ htpasswd
 ```
 ---
 
-### Cracking el hash de pypi con John
-
 ```console
 root@kali:/home/kali# john hash --wordlist=/usr/share/wordlists/rockyou.txt
 Warning: detected hash type "md5crypt", but the string is also recognized as "md5crypt-long"
