@@ -427,7 +427,7 @@ www-data@sneakymailer:/$ su developer
 Password: m^AsY7vTKVT+dV1{WOU%@NaHkUAId3]C
 developer@sneakymailer:/$ 
 ```
-### Enumeración
+### Enumeracion
 Al rato de echar un vistazo y enumerar me encuentro con los siguientes usuarios:
 
 ```console
