@@ -489,8 +489,8 @@ Necesitaremos crear 2 archivos esenciales
 
 ```console
 [distutils]
-	index-servers = local
-	[local]
+	index-servers = sneakycorp
+	[sneakycorp]
 	repository: http://pypi.sneakycorp.htb:8080
 	username: pypi
 	password: soufianeelhaoui
