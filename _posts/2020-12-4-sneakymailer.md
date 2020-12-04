@@ -84,7 +84,6 @@ lo agregamos también a el archivo hosts.
 127.0.1.1       kali
 10.10.10.197    sneakycorp.htb sneakymailer.htb
 ```
-
 Podemos extraer fácilmente las cuentas de correos con esta aplicación. [**email-checker**](https://email-checker.net/extract-email)
 Hacemos ctrl + a 
 copiamos, pegamos en la herramienta y extraemos.
@@ -138,9 +137,7 @@ Lo que vamos a hacer ahora es probar si podemos mandar correos a esos usuarios, 
 <-  221 2.0.0 Bye
 === Connection closed with remote host.
 ```
-
 Perfecto el correo se envió exitosamente. 
-
 
 ## Phishing a los empleados
 
@@ -168,9 +165,7 @@ Nos ponemos a la escucha en el puerto `8080` para capturar cualquier respuesta.
 kali@kali:~$ nc -lvnp 8080
 listening on [any] 8080 ...
 ```
-
 Muy bien, parece que paulbyrd accedió al link. 
-
 <asciinema-player src="/htb/sneakymailer/email.cast" cols="100" rows="20"></asciinema-player>
 
 ```console
