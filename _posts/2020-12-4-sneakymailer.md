@@ -2,7 +2,7 @@
 title: SneakyMailer HTB
 author: OxDeed
 date: 2020-12-4 15:17:00 -0300
-tags: [swaks,phishing,Medium,hackthebox,gtfobins]
+tags: [swaks,phishing,medium,hackthebox,gtfobins]
 math: true
 image: /htb/sneakymailer/sneakymailer.png
 
