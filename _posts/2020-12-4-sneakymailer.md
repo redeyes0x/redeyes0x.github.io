@@ -29,7 +29,7 @@ Lo próximo que hicimos para obtener nuestro preciado root.txt fue bastante senc
 
 ## Reconocimiento
 
-Acá nos damos cuenta de varias cosas bastante útiles, la primera es que está corriendo ftp, un servidor de correo y además descubrimos un dominio **sneakycorp.htb** que corre en el puerto 80 http. Otra de las cosas que me llamo la atención fue que el puerto 8080 está abierto, pero por ahora no sabemos que está corriendo. ¡Sigamos!
+Acá nos damos cuenta de varias cosas bastante útiles, la primera es que está corriendo los servicios ftp y un servidor de correos, además descubrimos un dominio **sneakycorp.htb**. Y el puerto 8080 que por ahora no sabemos que es lo que está corriendo. ¡Sigamos!
 
 ```console
 
