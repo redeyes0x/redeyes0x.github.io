@@ -183,10 +183,6 @@ Ya que las credenciales no funcionaron  con el ftp lo que hice fue intentar acce
 kali@kali:~$ nc sneakycorp.htb 143
 * OK [CAPABILITY IMAP4rev1 UIDPLUS CHILDREN NAMESPACE THREAD=ORDEREDSUBJECT THREAD=REFERENCES SORT QUOTA IDLE ACL ACL2=UNION STARTTLS ENABLE UTF8=ACCEPT] Courier-IMAP ready. Copyright 1998-2018 Double Precision, Inc.  See COPYING for distribution information.
 ```
-```console
-kali@kali:~$ nc sneakycorp.htb 143
-* OK [CAPABILITY IMAP4rev1 UIDPLUS CHILDREN NAMESPACE THREAD=ORDEREDSUBJECT THREAD=REFERENCES SORT QUOTA IDLE ACL ACL2=UNION STARTTLS ENABLE UTF8=ACCEPT] Courier-IMAP ready. Copyright 1998-2018 Double Precision, Inc.  See COPYING for distribution information.
-```
 
 ``0 login paulbyrd ^(#J@SkFv2[%KhIxKk(Ju`hqcHl<:Ht``
 
