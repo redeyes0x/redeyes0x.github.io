@@ -97,7 +97,7 @@ Lo guardamos todo en un archivo llamado emails.txt
 Lo que vamos a hacer ahora es probar si podemos mandar correos a esos usuarios, con una herramienta llamada [**Swaks**](https://github.com/jetmore/swaks) ***(Swiss Army Knife for SMTP).***
 
 ```console
-kali@sneakymailer$ swaks --from "testing@sneakymailer.htb" --body "Prueba" --to tigernixon@sneakymailer.htb
+./swaks --from "testing@sneakymailer.htb" --body "Prueba" --to tigernixon@sneakymailer.htb
 ```
 
 ```console
