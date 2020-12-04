@@ -482,6 +482,7 @@ Luego de leer un poco la documentación podemos ponernos manos a la obra. [**pip
 Necesitaremos crear 2 archivos esenciales
 
 `.pypirc`: Este archivo almacena inicios de sesión y contraseñas para autenticar sus cuentas. Normalmente se almacena en su directorio personal.
+
 `setup.py`: Aquí ira nuestro código malicioso.
 
 ![Desktop View](/htb/sneakymailer/pyprc.png)
