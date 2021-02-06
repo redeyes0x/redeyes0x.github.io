@@ -8,7 +8,7 @@ image: /htb/sneakymailer/sneakymailer.png
 
 ---
 
-## Resumen
+## Resumen:
 
 `SneakyMailer` es una máquina nivel intermedio bastante interesante. Con el primer barrido de nmap encontraremos un nuevo dominio `sneakycorp.htb` que en su sitio web contiene numerosos `emails` los cuales tendremos que hacerles un ataque de `phishing` para obtener el password que usaremos en el servidor `smtp`.
 
