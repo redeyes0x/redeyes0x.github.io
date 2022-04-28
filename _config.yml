@@ -8,9 +8,9 @@
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 #--------------------------
 
-title: OxDeed                          # the main title
+title: REDEYES TEAM                          # the main title
 
-tagline: Hackthebox Vault # it will display as the sub-title
+tagline: REDEYES TEAM # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   Blog de Ciberseguridad/Infosec | Writeups Máquinas de Hackthebox activas/retiradas | Red Teaming - Hacking
@@ -18,7 +18,7 @@ description: >-                        # used by seo meta and the atom feed
 # Replace with the website url, e.g. 'https://username.github.io'
 url: 'https://redeyes0x.github.io'
 
-author: Oxdeed                  # change to your full name
+author: REDEYES TEAM                  # change to your full name
 
 avatar: /assets/img/sample/avatar.jpg   # support internet resources
 
