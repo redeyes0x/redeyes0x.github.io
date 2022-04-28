@@ -20,21 +20,21 @@ url: 'https://redeyes0x.github.io'
 
 author: REDEYES TEAM                  # change to your full name
 
-avatar: /assets/img/sample/avatar.jpg   # support internet resources
+avatar: /img/D3jhyavO_400x400.jpg   # support internet resources
 
 github:
-  username: 0xDeed             # change to your github username
+  username: redeyes0x             # change to your github username
 
 twitter:
-  username: 0xdedmuz  # change to your twitter username
+  username: redeyes0x  # change to your twitter username
 
 social:
-  name: OxDeed                  # it will shows as the copyright owner in Footer
-  email: 0xdedmuz@gmail.com             # change to your email address
+  name: redeyes ream                  # it will shows as the copyright owner in Footer
+  email: redeyegp0x@gmail.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/0xdedmuz      # change to your twitter homepage
-    - https://github.com/0xDeed       # change to your github homepage
+    - https://twitter.com/redeyes0x      # change to your twitter homepage
+    - https://github.com/redeyes0x       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
