@@ -1,7 +1,7 @@
 ---
 layout: "post"
 title: "OS Command injections in exec.LookPath golang"
-date: 2023-03-5T21:44:02+01:00
+date: 2023-10-15T21:44:02+01:00
 ---
 
 > <html><body><b><p style="color:#ffffff;font-size:25px">Introduction:</p></b></body></html>
